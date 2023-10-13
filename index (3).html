@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convert Nilai ke Skala Huruf</title>
+  </head>
+  <body>
+    <div>
+      <label for="nilai">Masukkan Nilai: </label>
+      <input
+        type="number"
+        id="nilai"
+        min="0"
+        max="100"
+        oninput="limitValue(this, 100)"
+      />
+      <button onclick="konversiNilai()">Konversi</button>
+      <p id="hasil"></p>
+    </div>
+
+    <script>
+      function limitValue(input, max) {
+        if (parseInt(input.value) > max) {
+          input.value = max;
+        }
+      }
+
+      function konversiNilai() {
+        var nilai = parseFloat(document.getElementById("nilai").value);
+
+        var skalaHuruf;
+        if (nilai >= 80) {
+          skalaHuruf = "A";
+        } else if (nilai >= 75 && nilai < 80) {
+          skalaHuruf = "B+";
+        } else if (nilai >= 70 && nilai < 75) {
+          skalaHuruf = "B";
+        } else if (nilai >= 65 && nilai < 70) {
+          skalaHuruf = "C+";
+        } else if (nilai >= 60 && nilai < 65) {
+          skalaHuruf = "C";
+        } else if (nilai >= 55 && nilai < 60) {
+          skalaHuruf = "D";
+        } else {
+          skalaHuruf = "E";
+        }
+
+        // Hasil
+        var hasil = document.getElementById("hasil");
+        hasil.innerHTML = "Nilai: " + nilai + "<br>Skala Huruf: " + skalaHuruf;
+      }
+    </script>
+  </body>
+</html>
